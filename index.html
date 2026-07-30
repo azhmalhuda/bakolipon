@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Admin Jual HP</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+
+<body>
+    <!-- HEADER MOBILE -->
+
+<header class="mobile-header">
+
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    type="button"
+    aria-label="Buka menu"
+  >
+    ☰
+  </button>
+
+
+  <div class="mobile-title">
+
+    Admin Jual HP
+
+  </div>
+
+
+  <div></div>
+
+</header>
+
+
+<!-- LAPISAN GELAP SAAT MENU TERBUKA -->
+
+<div
+  class="sidebar-overlay"
+  id="sidebarOverlay"
+></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      <div class="logo-icon">📱</div>
+
+      <div>
+        <h2>HP Admin</h2>
+        <p>Manajemen Jual HP</p>
+      </div>
+    </div>
+
+    <nav class="menu">
+
+  <a
+    href="#"
+    data-page="dashboard"
+    class="menu-item active"
+  >
+    <span class="menu-icon">📊</span>
+    <span class="menu-text">Dashboard</span>
+  </a>
+
+  <a
+    href="#"
+    data-page="stok"
+    class="menu-item"
+  >
+    <span class="menu-icon">📱</span>
+    <span class="menu-text">Stok HP</span>
+  </a>
+
+  <a
+    href="#"
+    data-page="tambah"
+    class="menu-item"
+  >
+    <span class="menu-icon">➕</span>
+    <span class="menu-text">Tambah HP</span>
+  </a>
+
+  <a
+    href="#"
+    data-page="history"
+    class="menu-item"
+  >
+    <span class="menu-icon">🧾</span>
+    <span class="menu-text">History</span>
+  </a>
+
+  <a
+    href="#"
+    data-page="rekap"
+    class="menu-item"
+  >
+    <span class="menu-icon">📈</span>
+    <span class="menu-text">Rekap Bulanan</span>
+  </a>
+
+</nav>
+
+  </aside>
+
+
+  <!-- KONTEN UTAMA -->
+  <main class="main-content">
+
+    <!-- HEADER -->
+    <header class="header">
+
+      <div>
+        <h1 id="pageTitle">
+          Dashboard
+        </h1>
+
+        <p id="pageDescription">
+          Ringkasan bisnis jual beli HP
+        </p>
+      </div>
+
+      <div class="admin-profile">
+        <div class="profile-icon">
+          A
+        </div>
+
+        <span>Admin</span>
+      </div>
+
+    </header>
+
+
+    <!-- DASHBOARD -->
+    <section
+      id="dashboard"
+      class="page active-page"
+    >
+
+      <div class="summary-grid">
+
+        <div class="summary-card">
+          <span>📱</span>
+
+          <div>
+            <p>Total Stok</p>
+            <h2 id="totalStok">0</h2>
+          </div>
+        </div>
+
+
+        <div class="summary-card">
+          <span>🛒</span>
+
+          <div>
+            <p>Terjual Bulan Ini</p>
+            <h2 id="terjualBulanIni">0</h2>
+          </div>
+        </div>
+
+
+        <div class="summary-card">
+          <span>💰</span>
+
+          <div>
+            <p>Keuntungan Bulan Ini</p>
+
+            <h2 id="keuntunganBulanIni">
+              Rp0
+            </h2>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="content-card">
+
+        <h2>Selamat datang</h2>
+
+        <p>
+          Gunakan menu di sebelah kiri untuk
+          mengelola stok dan penjualan HP.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- STOK -->
+    <section
+      id="stok"
+      class="page"
+    >
+
+      <div class="page-action">
+
+        <div>
+          <h2>Stok HP</h2>
+
+          <p>
+            Daftar HP yang masih tersedia
+          </p>
+        </div>
+
+        <button
+          class="primary-button"
+          id="goTambah"
+        >
+          + Tambah HP
+        </button>
+
+      </div>
+
+
+      <div
+        id="stokContainer"
+        class="product-grid"
+      >
+
+        <div class="empty-state">
+
+          <span>📱</span>
+
+          <h3>
+            Belum ada data HP
+          </h3>
+
+          <p>
+            Tambahkan HP pertama
+            menggunakan menu Tambah HP.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TAMBAH HP -->
+    <section
+      id="tambah"
+      class="page"
+    >
+
+      <div class="form-card">
+
+        <div class="form-header">
+
+          <h2>Tambah HP</h2>
+
+          <p>
+            Masukkan data HP yang baru dibeli
+          </p>
+
+        </div>
+
+
+        <form id="formTambahHP">
+
+          <div class="form-group">
+
+            <label for="namaHP">
+              Nama / Seri HP
+            </label>
+
+            <input
+              type="text"
+              id="namaHP"
+              placeholder="Contoh: iPhone 13 128 GB"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+  <label>
+    Foto HP
+  </label>
+
+
+  <div class="foto-option">
+
+    <!-- FOTO DARI KAMERA -->
+
+    <label
+      for="kameraHP"
+      class="foto-button kamera-button"
+    >
+
+      <span>
+        📷
+      </span>
+
+      Ambil dari Kamera
+
+    </label>
+
+
+    <!-- FOTO DARI FILE -->
+
+    <label
+      for="fotoHP"
+      class="foto-button file-button"
+    >
+
+      <span>
+        📁
+      </span>
+
+      Pilih dari File
+
+    </label>
+
+  </div>
+
+
+  <!-- INPUT KAMERA -->
+
+  <input
+    type="file"
+    id="kameraHP"
+    accept="image/*"
+    capture="environment"
+    hidden
+  >
+
+
+  <!-- INPUT FILE -->
+
+  <input
+    type="file"
+    id="fotoHP"
+    accept="image/*"
+    hidden
+  >
+
+</div>
+
+
+          <div
+            id="fotoPreview"
+            class="foto-preview"
+          >
+
+            <span>📷</span>
+
+            <p>
+              Preview foto akan muncul di sini
+            </p>
+
+          </div>
+
+
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label for="hargaBeli">
+                Harga Beli
+              </label>
+
+              <input
+                type="number"
+                id="hargaBeli"
+                min="0"
+                placeholder="Contoh: 5000000"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="biayaReparasi">
+                Biaya Reparasi
+              </label>
+
+              <input
+                type="number"
+                id="biayaReparasi"
+                min="0"
+                value="0"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="biayaLain">
+              Biaya Lain-lain
+            </label>
+
+            <input
+              type="number"
+              id="biayaLain"
+              min="0"
+              value="0"
+            >
+
+          </div>
+
+
+          <div class="hpp-box">
+
+            <span>
+              Total HPP
+            </span>
+
+            <strong id="totalHPP">
+              Rp0
+            </strong>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="primary-button submit-button"
+          >
+
+            Simpan HP
+
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+    <!-- EDIT HP -->
+
+<section
+  id="edit"
+  class="page"
+>
+
+  <div class="form-card">
+
+    <div class="form-header">
+
+      <h2>
+        Edit Data HP
+      </h2>
+
+      <p>
+        Ubah biaya HP. Total HPP akan dihitung otomatis.
+      </p>
+
+    </div>
+
+
+    <form id="formEditHP">
+
+      <!-- ID DISIMPAN TERSEMBUNYI -->
+
+      <input
+        type="hidden"
+        id="editIdHP"
+      >
+
+
+      <div class="form-group">
+
+        <label for="editNamaHP">
+          Nama / Seri HP
+        </label>
+
+        <input
+          type="text"
+          id="editNamaHP"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="editHargaBeli">
+            Harga Beli
+          </label>
+
+          <input
+            type="number"
+            id="editHargaBeli"
+            min="0"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="editBiayaReparasi">
+            Biaya Reparasi
+          </label>
+
+          <input
+            type="number"
+            id="editBiayaReparasi"
+            min="0"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="editBiayaLain">
+          Biaya Lain-lain
+        </label>
+
+        <input
+          type="number"
+          id="editBiayaLain"
+          min="0"
+          required
+        >
+
+      </div>
+
+
+      <div class="hpp-box">
+
+        <span>
+          Total HPP Baru
+        </span>
+
+        <strong id="editTotalHPP">
+          Rp0
+        </strong>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="primary-button submit-button"
+      >
+
+        💾 Simpan Perubahan
+
+      </button>
+
+
+      <button
+        type="button"
+        class="secondary-button"
+        id="batalEdit"
+      >
+
+        Batal
+
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+    <!-- HISTORY -->
+<section
+  id="history"
+  class="page"
+>
+
+  <div class="page-action">
+
+    <div>
+
+      <h2>
+        History Penjualan
+      </h2>
+
+      <p>
+        Daftar HP yang sudah terjual
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div
+    id="historyContainer"
+    class="product-grid"
+  >
+
+    <div class="empty-state">
+
+      <span>🧾</span>
+
+      <h3>
+        Memuat history...
+      </h3>
+
+      <p>
+        Mengambil data penjualan.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- REKAP -->
+<section
+  id="rekap"
+  class="page"
+>
+
+  <div class="page-action">
+
+    <div>
+
+      <h2>
+        Rekap Keuntungan Bulanan
+      </h2>
+
+      <p>
+        Ringkasan penjualan dan keuntungan
+      </p>
+
+    </div>
+
+
+    <div class="filter-bulan">
+
+      <label for="pilihBulan">
+        Pilih Bulan
+      </label>
+
+      <input
+        type="month"
+        id="pilihBulan"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- KARTU RINGKASAN -->
+
+  <div class="rekap-grid">
+
+    <div class="rekap-card">
+
+      <span class="rekap-icon">
+        💰
+      </span>
+
+      <div>
+
+        <p>
+          Total Keuntungan
+        </p>
+
+        <h2
+          id="rekapKeuntungan"
+        >
+          Rp0
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="rekap-card">
+
+      <span class="rekap-icon">
+        📱
+      </span>
+
+      <div>
+
+        <p>
+          HP Terjual
+        </p>
+
+        <h2
+          id="rekapJumlahHP"
+        >
+          0 Unit
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="rekap-card">
+
+      <span class="rekap-icon">
+        🛒
+      </span>
+
+      <div>
+
+        <p>
+          Total Omzet
+        </p>
+
+        <h2
+          id="rekapOmzet"
+        >
+          Rp0
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="rekap-card">
+
+      <span class="rekap-icon">
+        📦
+      </span>
+
+      <div>
+
+        <p>
+          Total HPP
+        </p>
+
+        <h2
+          id="rekapHPP"
+        >
+          Rp0
+        </h2>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TABEL TRANSAKSI -->
+
+  <div class="rekap-table-card">
+
+    <div class="table-header">
+
+      <div>
+
+        <h2>
+          Detail Penjualan
+        </h2>
+
+        <p id="judulBulanRekap">
+          Data penjualan bulan ini
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Tanggal
+            </th>
+
+            <th>
+              Nama HP
+            </th>
+
+            <th>
+              Total HPP
+            </th>
+
+            <th>
+              Harga Jual
+            </th>
+
+            <th>
+              Keuntungan
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody
+          id="rekapTableBody"
+        >
+
+          <tr>
+
+            <td
+              colspan="5"
+              class="table-empty"
+            >
+
+              Memuat data...
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
